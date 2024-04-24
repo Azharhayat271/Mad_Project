@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
-import 'package:chatbotfrontend/pages/home.dart';
+import 'package:smart_assistant_uni/ui/signup.dart';
+import 'navbar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -147,10 +148,10 @@ class _SignInEightState extends State<LoginPage> {
         ),
         children: const [
           TextSpan(
-            text: 'LOGIN',
+            text: 'UET',
           ),
           TextSpan(
-            text: 'PAGE',
+            text: 'Narowal',
             style: TextStyle(
               color: Color(0xFFFE9879),
             ),
@@ -368,47 +369,53 @@ class _SignInEightState extends State<LoginPage> {
 
   Widget buildCreativeButton(Size size) {
     return Container(
-      width: size.width * 0.7,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15.0),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFF21899C),
-            Color(0xFF33CCCC),
+        width: size.width * 0.7,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF21899C),
+              Color(0xFF33CCCC),
+            ],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 3,
+              blurRadius: 7,
+              offset: Offset(0, 3),
+            ),
           ],
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 3,
-            blurRadius: 7,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(15.0),
-          onTap: () {},
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
-            child: Text(
-              'Create Account',
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.2,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SignUpPage()),
+            );
+          },
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(15.0),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(vertical: 12.0),
+                child: Text(
+                  'Create Account',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
-              textAlign: TextAlign.center,
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   void signIn() async {
@@ -440,7 +447,7 @@ class _SignInEightState extends State<LoginPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => ChatScreen(),
+          builder: (context) => CustomBottomNavBar(),
         ),
       );
     } else {

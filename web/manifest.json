@@ -1,6 +1,6 @@
 {
-    "name": "chatbotfrontend",
-    "short_name": "chatbotfrontend",
+    "name": "smart_assistant_uni",
+    "short_name": "smart_assistant_uni",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
