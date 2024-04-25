@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_assistant_uni/ui/signup.dart';
 import 'navbar.dart';
+import 'admin/admin.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -443,13 +444,26 @@ class _SignInEightState extends State<LoginPage> {
     });
 
     if (response.statusCode == 200) {
-      // Navigate to main screen by calling the ChatScreen function
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => CustomBottomNavBar(),
-        ),
-      );
+      final String username = usernameController.text;
+
+      if (username == 'admin') {
+        // Navigate to the admin page
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                AdminHomePage(), // Replace AdminPage with your actual admin page
+          ),
+        );
+      } else {
+        // Navigate to CustomBottomNavBar
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CustomBottomNavBar(),
+          ),
+        );
+      }
     } else {
       // Show invalid credential message
       showDialog(
