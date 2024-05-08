@@ -1,29 +1,40 @@
 import 'package:flutter/material.dart';
+import './information.dart'; // Import the Information.dart screen
 
 class InformationCard extends StatelessWidget {
-  const InformationCard({super.key});
+  const InformationCard({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 5.0,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            Icon(Icons.info_outline,
-                size: 40, color: Colors.blue), // Informative icon
-            SizedBox(height: 10),
-            Text('Information Hub',
-                style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Padding(
-              padding: EdgeInsets.only(left: 8.0),
-              child:
-                  Text('Essential resources and updates at your fingertips.'),
-            ),
-          ],
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    InformationScreen()), // Navigate to Information.dart screen
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Icon(Icons.info_outline,
+                  size: 40, color: Colors.blue), // Informative icon
+              SizedBox(height: 10),
+              Text('Information Hub',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              SizedBox(height: 5),
+              Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child:
+                    Text('Essential resources and updates at your fingertips.'),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -6,6 +6,7 @@ class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ChatScreenState createState() => _ChatScreenState();
 }
 
@@ -32,9 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
       if (response.statusCode == 200) {
         Map<String, dynamic> data = json.decode(response.body);
         String answer = data['answer'];
-        return answer != null
-            ? answer
-            : "Error: No answer provided by the server";
+        return answer;
       } else {
         return "Error: Failed to fetch response";
       }
