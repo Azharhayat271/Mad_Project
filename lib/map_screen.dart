@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:mapbox_gl/mapbox_gl.dart';
 
-class MapScreen extends StatefulWidget {
-  @override
-  _MapScreenState createState() => _MapScreenState();
+void main() {
+  runApp(MyApp());
 }
 
-class _MapScreenState extends State<MapScreen> {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String _accessToken =
+      'pk.eyJ1IjoiYXpoYXJoYXlhdDI3MSIsImEiOiJjbHZ4ZGsyZm8wOTFhMmpudDF2Y2gzaDE5In0.aAchbxCCuj6vUsuBfirP8Q'; // Replace with your token
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Map Screen'),
-      ),
-      body: Center(
-        child: Text('This is the Map Screen'),
+    return MaterialApp(
+      home: Scaffold(
+        body: MapboxMap(
+          accessToken: _accessToken,
+          initialCameraPosition: const CameraPosition(
+            // Use const constructor
+            target: LatLng(32.097573,
+                74.764942), // San Francisco (replace with your desired location)
+            zoom: 13.0,
+          ),
+        ),
       ),
     );
   }

@@ -16,7 +16,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   final List<Widget> _screens = [
     HomeScreen(),
-    MapScreen(),
+    MyApp(),
     ChatScreen(),
   ];
 

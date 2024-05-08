@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../cards/hostel_registration_card.dart';
 import '../cards/info_card.dart';
 import '../cards/departments_card.dart';
+import '../cards/logout.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
             HostelRegistrationCard(),
             InformationCard(),
             DepartmentsCard(),
+            LogoutCard(),
           ],
         ),
       ),

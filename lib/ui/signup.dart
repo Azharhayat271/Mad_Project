@@ -34,6 +34,18 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: welcomeText(),
               ),
 
+              Expanded(
+                flex: 3,
+                child: Column(
+                  children: <Widget>[
+                    logo(size.height / 8, size.height / 8),
+                    SizedBox(
+                      height: size.height * 0.025,
+                    ),
+                  ],
+                ),
+              ),
+
               // Input fields for name, username, email, and password
               Expanded(
                 flex: 5,
@@ -195,6 +207,14 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget logo(double height_, double width_) {
+    return Image.asset(
+      'assets/uet.png',
+      width: 100,
+      height: 100,
     );
   }
 

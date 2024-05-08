@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -49,9 +50,12 @@ class _SplashScreenState extends State<SplashScreen>
           children: [
             // Add your app logo or any other branding elements
             SlideTransition(
-              position: _offsetAnimation,
-              child: FlutterLogo(size: 100),
-            ),
+                position: _offsetAnimation,
+                child: Image.asset(
+                  'assets/uet.png',
+                  width: 100,
+                  height: 100,
+                )),
             SizedBox(height: 20),
             Text(
               'UET Smart Assistant',

@@ -63,7 +63,6 @@ class _SignInEightState extends State<LoginPage> {
                     SizedBox(
                       height: size.height * 0.02,
                     ),
-                    rememberForgetText(),
                   ],
                 ),
               ),
@@ -131,10 +130,10 @@ class _SignInEightState extends State<LoginPage> {
   }
 
   Widget logo(double height_, double width_) {
-    return SvgPicture.asset(
-      'assets/logo.svg',
-      height: height_,
-      width: width_,
+    return Image.asset(
+      'assets/uet.png',
+      width: 100,
+      height: 100,
     );
   }
 
@@ -260,45 +259,6 @@ class _SignInEightState extends State<LoginPage> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget rememberForgetText() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-          width: 13.0,
-          height: 13.0,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(1.0),
-            border: Border.all(
-              width: 1.0,
-              color: const Color(0xFF6A6F7D),
-            ),
-          ),
-        ),
-        const SizedBox(
-          width: 16,
-        ),
-        Text(
-          'Remember me',
-          style: TextStyle(
-            fontSize: 11.0,
-            color: const Color(0xFF6A6F7D),
-          ),
-        ),
-        Expanded(
-          child: Text(
-            'Forgot Password?',
-            style: TextStyle(
-              fontSize: 12.0,
-              color: const Color(0xFF6A6F7D),
-            ),
-            textAlign: TextAlign.right,
-          ),
-        ),
-      ],
     );
   }
 
