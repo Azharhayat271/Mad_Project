@@ -89,7 +89,7 @@ class _SignInEightState extends State<LoginPage> {
   }
 
   Widget welcomeText() {
-    return Center(
+    return const Center(
       child: Text.rich(
         TextSpan(
           style: TextStyle(
@@ -97,7 +97,7 @@ class _SignInEightState extends State<LoginPage> {
             color: Colors.black,
             height: 1.45,
           ),
-          children: const [
+          children: [
             TextSpan(
               text: 'Welcome Back',
             ),
@@ -138,15 +138,15 @@ class _SignInEightState extends State<LoginPage> {
   }
 
   Widget richText(double fontSize) {
-    return Text.rich(
+    return const Text.rich(
       TextSpan(
         style: TextStyle(
           fontSize: 20.42,
-          color: const Color(0xFF21899C),
+          color: Color(0xFF21899C),
           letterSpacing: 2.0000000290903555,
           fontWeight: FontWeight.w800,
         ),
-        children: const [
+        children: [
           TextSpan(
             text: 'UET',
           ),
@@ -161,6 +161,7 @@ class _SignInEightState extends State<LoginPage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget UserNameTextField(Size size) {
     return SizedBox(
       height: size.height / 10,
@@ -169,9 +170,9 @@ class _SignInEightState extends State<LoginPage> {
         maxLines: 1,
         keyboardType: TextInputType.name,
         cursorColor: const Color.fromRGBO(44, 185, 176, 1),
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 17.0,
-          color: const Color(0xFF36455A),
+          color: Color(0xFF36455A),
           fontWeight: FontWeight.w500,
         ),
         decoration: InputDecoration(
@@ -220,9 +221,9 @@ class _SignInEightState extends State<LoginPage> {
         obscureText: true,
         cursorColor: const Color.fromRGBO(44, 185, 176, 1),
         keyboardType: TextInputType.visiblePassword,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 17.0,
-          color: const Color(0xFF36455A),
+          color: Color(0xFF36455A),
           fontWeight: FontWeight.w500,
         ),
         decoration: InputDecoration(
@@ -278,10 +279,10 @@ class _SignInEightState extends State<LoginPage> {
         ),
       ),
       child: isLoading
-          ? CircularProgressIndicator(
+          ? const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             )
-          : Text(
+          : const Text(
               'Sign in',
               style: TextStyle(
                 fontSize: 16.0,
@@ -295,11 +296,11 @@ class _SignInEightState extends State<LoginPage> {
   }
 
   Widget buildNoAccountText() {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        const Expanded(
+        Expanded(
           flex: 2,
           child: Divider(
             color: Color(0xFF969AA8),
@@ -312,13 +313,13 @@ class _SignInEightState extends State<LoginPage> {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 12.0,
-              color: const Color(0xFF969AA8),
+              color: Color(0xFF969AA8),
               fontWeight: FontWeight.w500,
               height: 1.67,
             ),
           ),
         ),
-        const Expanded(
+        Expanded(
           flex: 2,
           child: Divider(
             color: Color(0xFF969AA8),
@@ -333,7 +334,7 @@ class _SignInEightState extends State<LoginPage> {
         width: size.width * 0.7,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
@@ -346,7 +347,7 @@ class _SignInEightState extends State<LoginPage> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 3,
               blurRadius: 7,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -409,6 +410,7 @@ class _SignInEightState extends State<LoginPage> {
       if (username == 'admin') {
         // Navigate to the admin page
         Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(
             builder: (context) =>
@@ -418,26 +420,28 @@ class _SignInEightState extends State<LoginPage> {
       } else {
         // Navigate to CustomBottomNavBar
         Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(
-            builder: (context) => CustomBottomNavBar(),
+            builder: (context) => const CustomBottomNavBar(),
           ),
         );
       }
     } else {
       // Show invalid credential message
       showDialog(
+        // ignore: use_build_context_synchronously
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Invalid Credentials'),
-            content: Text('Please enter valid username and password.'),
+            title: const Text('Invalid Credentials'),
+            content: const Text('Please enter valid username and password.'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );
