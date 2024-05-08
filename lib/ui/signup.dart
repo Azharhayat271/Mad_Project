@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -80,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Widget welcomeText() {
-    return Center(
+    return const Center(
       child: Text.rich(
         TextSpan(
           style: TextStyle(
@@ -88,7 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
             color: Colors.black,
             height: 1.45,
           ),
-          children: const [
+          children: [
             TextSpan(
               text: 'Welcome, ',
             ),
@@ -108,6 +107,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget NameTextField(Size size) {
     return SizedBox(
       height: size.height / 10,
@@ -116,9 +116,9 @@ class _SignUpPageState extends State<SignUpPage> {
         maxLines: 1,
         keyboardType: TextInputType.name,
         cursorColor: const Color.fromRGBO(44, 185, 176, 1),
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 17.0,
-          color: const Color(0xFF36455A),
+          color: Color(0xFF36455A),
           fontWeight: FontWeight.w500,
         ),
         decoration: InputDecoration(
@@ -127,9 +127,9 @@ class _SignUpPageState extends State<SignUpPage> {
             fontSize: 12.0,
             color: const Color(0xFF6A6F7D).withOpacity(0.6),
           ),
-          enabledBorder: UnderlineInputBorder(
+          enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
-              color: const Color.fromRGBO(44, 185, 176, 1),
+              color: Color.fromRGBO(44, 185, 176, 1),
             ),
           ),
           focusedBorder: const UnderlineInputBorder(
@@ -142,6 +142,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget UserNameTextField(Size size) {
     return SizedBox(
       height: size.height / 10,
@@ -150,9 +151,9 @@ class _SignUpPageState extends State<SignUpPage> {
         maxLines: 1,
         keyboardType: TextInputType.name,
         cursorColor: const Color.fromRGBO(44, 185, 176, 1),
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 17.0,
-          color: const Color(0xFF36455A),
+          color: Color(0xFF36455A),
           fontWeight: FontWeight.w500,
         ),
         decoration: InputDecoration(
@@ -161,9 +162,9 @@ class _SignUpPageState extends State<SignUpPage> {
             fontSize: 12.0,
             color: const Color(0xFF6A6F7D).withOpacity(0.6),
           ),
-          enabledBorder: UnderlineInputBorder(
+          enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
-              color: const Color.fromRGBO(44, 185, 176, 1),
+              color: Color.fromRGBO(44, 185, 176, 1),
             ),
           ),
           focusedBorder: const UnderlineInputBorder(
@@ -176,6 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget EmailTextField(Size size) {
     return SizedBox(
       height: size.height / 10,
@@ -184,9 +186,9 @@ class _SignUpPageState extends State<SignUpPage> {
         maxLines: 1,
         keyboardType: TextInputType.emailAddress,
         cursorColor: const Color.fromRGBO(44, 185, 176, 1),
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 17.0,
-          color: const Color(0xFF36455A),
+          color: Color(0xFF36455A),
           fontWeight: FontWeight.w500,
         ),
         decoration: InputDecoration(
@@ -195,9 +197,9 @@ class _SignUpPageState extends State<SignUpPage> {
             fontSize: 12.0,
             color: const Color(0xFF6A6F7D).withOpacity(0.6),
           ),
-          enabledBorder: UnderlineInputBorder(
+          enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
-              color: const Color.fromRGBO(44, 185, 176, 1),
+              color: Color.fromRGBO(44, 185, 176, 1),
             ),
           ),
           focusedBorder: const UnderlineInputBorder(
@@ -296,7 +298,8 @@ class _SignUpPageState extends State<SignUpPage> {
     final password = passController.text;
 
     final response = await http.post(
-      Uri.parse('YOUR_SIGNUP_API_ENDPOINT'),
+      Uri.parse(
+          'https://uet-narowal-chatbot-server.onrender.com/api/auth/registeraccount'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -312,12 +315,45 @@ class _SignUpPageState extends State<SignUpPage> {
       isLoading = false;
     });
 
-    if (response.statusCode == 200) {
-      // Handle successful sign-up
-      // You may navigate to another screen or show a success message
+    if (response.statusCode == 201) {
+      // Show success pop-up
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Registration Successful'),
+            content: Text('Your account has been created successfully.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  // Navigate to login page
+                  Navigator.pushReplacementNamed(context, '/home');
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
     } else {
-      // Handle sign-up failure
-      // You can display an error message to the user
+      // Show error pop-up
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Registration Failed'),
+            content: Text('Failed to create your account. Please try again.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 }
