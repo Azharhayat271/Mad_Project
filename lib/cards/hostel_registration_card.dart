@@ -12,7 +12,7 @@ class HostelRegistrationCard extends StatelessWidget {
         // Add your navigation code here
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HostelRegistrationScreen()),
+          MaterialPageRoute(builder: (context) => HostelDetails()),
         );
       },
       child: Card(
@@ -24,7 +24,7 @@ class HostelRegistrationCard extends StatelessWidget {
             children: const [
               Icon(Icons.hotel, size: 40),
               SizedBox(height: 10),
-              Text('Hostel Registration',
+              Text('Hostel Facilities',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               SizedBox(height: 5),
               Padding(

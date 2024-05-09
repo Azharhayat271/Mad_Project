@@ -32,7 +32,7 @@ class CivilEngineeringScreen extends StatelessWidget {
             Text('- Civil Engineering'),
             SizedBox(height: 20),
             Text(
-              'Total Students: 250',
+              'Total Students: 150+',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
@@ -44,7 +44,7 @@ class CivilEngineeringScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            Text('- Codator'),
+            Text('- ACE CESA'),
             SizedBox(height: 20),
             Text(
               'Staff:',
@@ -54,13 +54,11 @@ class CivilEngineeringScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            Text('- Dr. Muhammad Idrees (Chairman)'),
-            Text('- Dr. Mubasshir Khatana'),
-            Text('- Dr. Yaseen ul haq'),
-            Text('- Dr. Iqra Muneer'),
-            Text('- Miss Fatima Shahzadi'),
-            Text('- Miss Sadia Tariq'),
-            Text('- Miss Rabia Sana'),
+            Text('- Dr. Khawaja Adeel (Chairman)'),
+            Text('- Dr. Thair'),
+            Text('- Dr. Shoiab karam'),
+            Text('- Miss Sherish'),
+
             // Add other staff members similarly
           ],
         ),
