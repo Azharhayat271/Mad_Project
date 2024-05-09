@@ -12,54 +12,65 @@ class CivilEngineeringScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Programs Offered:',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Masters Programs',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Bachelors Programs:',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Text('- Civil Engineering'),
+            _buildSection('Programs Offered', Icons.architecture,
+                ['Masters Programs', 'Bachelors Programs: Civil Engineering']),
+            SizedBox(height: 20),
+            _buildSection('Departmental Societies', Icons.groups, ['ACE CESA']),
             SizedBox(height: 20),
             Text(
-              'Total Students: 150+',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Departmental Societies:',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              'Staff',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Text('- ACE CESA'),
-            SizedBox(height: 20),
-            Text(
-              'Staff:',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 10),
-            Text('- Dr. Khawaja Adeel (Chairman)'),
-            Text('- Dr. Thair'),
-            Text('- Dr. Shoiab karam'),
-            Text('- Miss Sherish'),
+            _buildStaffCard('Dr. Khawaja Adeel', 'Chairman'),
+            _buildStaffCard('Dr. Thair', ''),
+            _buildStaffCard('Dr. Shoiab karam', ''),
+            _buildStaffCard('Miss Sherish', ''),
+          ],
+        ),
+      ),
+    );
+  }
 
-            // Add other staff members similarly
+  Widget _buildSection(String title, IconData icon, List<String> items) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 10),
+        for (var item in items)
+          Row(
+            children: [
+              Icon(icon, size: 24),
+              SizedBox(width: 8.0),
+              Text(item),
+            ],
+          ),
+      ],
+    );
+  }
+
+  Widget _buildStaffCard(String name, String title) {
+    return Card(
+      margin: EdgeInsets.only(bottom: 10.0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Icon(Icons.person, size: 40),
+            SizedBox(width: 8.0),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
+                  if (title.isNotEmpty) Text(title),
+                ],
+              ),
+            ),
           ],
         ),
       ),

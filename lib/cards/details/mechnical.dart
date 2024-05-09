@@ -12,53 +12,68 @@ class MechanicalEngineeringScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Programs Offered:',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 10),
-            Text(
+            _buildSection('Programs Offered', Icons.build, [
               'Masters Programs',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              'Bachelors Programs: Mechanical Engineering'
+            ]),
+            SizedBox(height: 20),
+            _buildSection('Departmental Societies', Icons.groups,
+                ['Amercian Socitey of Mechanical Engineers (ASME)']),
+            SizedBox(height: 20),
+            Text(
+              'Staff',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Text(
-              'Bachelors Programs:',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Text('- Mechanical Engineering'),
-            SizedBox(height: 20),
-            Text(
-              'Total Students: 350',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Departmental Societies:',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            _buildStaffCard('Dr. Khazar Hayat', 'Chairman'),
+            _buildStaffCard('Dr. Tipu Sultan', ''),
+            _buildStaffCard('Dr. Saqlain abbas', ''),
+            _buildStaffCard('Dr. Sufyain Matloob', ''),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSection(String title, IconData icon, List<String> items) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 10),
+        for (var item in items)
+          Row(
+            children: [
+              Icon(icon, size: 24),
+              SizedBox(width: 8.0),
+              Text(item),
+            ],
+          ),
+      ],
+    );
+  }
+
+  Widget _buildStaffCard(String name, String title) {
+    return Card(
+      margin: EdgeInsets.only(bottom: 10.0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Icon(Icons.person, size: 40),
+            SizedBox(width: 8.0),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
+                  if (title.isNotEmpty) Text(title),
+                ],
               ),
             ),
-            SizedBox(height: 10),
-            Text('- Amercian Socitey of Mechanical Engineers (ASME)'),
-            SizedBox(height: 20),
-            Text(
-              'Staff:',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 10),
-            Text('- Dr. Khazar Hayat (Chairman)'),
-            Text('- Dr. Tipu Sultan'),
-            Text('- Dr. Saqlain abbas'),
-            Text('- Dr. Sufyain Matloob'),
-            // Add other staff members similarly
           ],
         ),
       ),
