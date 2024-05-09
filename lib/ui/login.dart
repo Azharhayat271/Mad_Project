@@ -120,7 +120,7 @@ class _SignInEightState extends State<LoginPage> {
               ),
             ),
             TextSpan(
-              text: 'for Continue !',
+              text: 'to Continue !',
             ),
           ],
         ),

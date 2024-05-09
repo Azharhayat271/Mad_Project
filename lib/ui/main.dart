@@ -11,10 +11,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'UET Smart Assistant',
+
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(), // Set SplashScreen as the initial route
+      home: SplashScreen(),
+      debugShowCheckedModeBanner:
+          false, // Set SplashScreen as the initial route
       routes: {
         '/home': (context) =>
             const LoginPage(), // Define the route for the home screen

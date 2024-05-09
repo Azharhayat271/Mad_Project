@@ -48,16 +48,18 @@ class _SignUpPageState extends State<SignUpPage> {
               // Input fields for name, username, email, and password
               Expanded(
                 flex: 5,
-                child: Column(
-                  children: <Widget>[
-                    NameTextField(size),
-                    SizedBox(height: size.height * 0.01),
-                    UserNameTextField(size),
-                    SizedBox(height: size.height * 0.01),
-                    EmailTextField(size),
-                    SizedBox(height: size.height * 0.01),
-                    PasswordTextField(size),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      NameTextField(size),
+                      SizedBox(height: size.height * 0.01),
+                      UserNameTextField(size),
+                      SizedBox(height: size.height * 0.01),
+                      EmailTextField(size),
+                      SizedBox(height: size.height * 0.01),
+                      PasswordTextField(size),
+                    ],
+                  ),
                 ),
               ),
 
@@ -256,34 +258,37 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Widget signUpButton(Size size) {
-    return ElevatedButton(
-      onPressed: isLoading ? null : signUp,
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(
-          isLoading
-              ? Colors.grey
-              : const Color(0xFFE67E22), // Changed color here
-        ),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+    return Padding(
+      padding: const EdgeInsets.only(top: 30.0),
+      child: ElevatedButton(
+        onPressed: isLoading ? null : signUp,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            isLoading
+                ? const Color.fromARGB(255, 1, 0, 0)
+                : const Color(0xFFE67E22), // Changed color here
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
           ),
         ),
-      ),
-      child: isLoading
-          ? CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-            )
-          : Text(
-              'Sign Up',
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-                height: 1.5,
+        child: isLoading
+            ? CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              )
+            : Text(
+                'Sign Up',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                  height: 1.5,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
+      ),
     );
   }
 
